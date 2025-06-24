@@ -5,6 +5,10 @@
 spec:
   template:
     spec:
+      volumes:
+        {{- if .Values.extraVolumes }}
+        {{ toYaml .Values.extraVolumes | nindent 8 }}
+        {{- end }}
       containers:
         - name: app
           ports:
@@ -33,4 +37,8 @@ spec:
             {{ include "common.envvar.shared.configs" . | indent 2 }}
             {{ include "common.envvar.shared.secrets" . | indent 2 }}
           {{ include "common.resources" . | nindent 10 }}
+          volumeMounts:
+            {{- if .Values.extraVolumeMounts }}
+            {{ toYaml .Values.extraVolumeMounts | nindent 12}}
+            {{- end }}
 {{- end -}}
