@@ -68,3 +68,9 @@ config: {}
 #   data:
 #     key: value
 #     key2: value2
+
+# additional volumes
+extraVolumes: []
+
+# additional volume mounts
+extraVolumeMounts: []
